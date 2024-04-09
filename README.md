@@ -9,11 +9,13 @@ Ella creates a starter Flutter project with all of these out of the box:
 - [x] HTTP client with interceptors ([Dio](https://pub.dev/packages/dio))
 - [x] Local storage
 - [x] Navigation
-- [x] Dialogs
+- [x] Dialogs with [flutter_dialog_manager](https://pub.dev/packages/flutter_dialog_manager)
 - [x] Service Location with [get_it](https://pub.dev/packages/get_it)
 - [x] Feature based architecture
-- [x] Testing
+- [x] Testing with [mockito](https://pub.dev/packages/mockito)
 - [x] Flavor setup (additional setup is required in the platform targets)
+- [x] Optional FVM configuration
+- [x] Vscode launch configuration with support for different flavor entry points
 
 ### Web
 
