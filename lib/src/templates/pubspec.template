@@ -16,7 +16,7 @@ dependencies:
   equatable: ^2.0.5
   flutter_secure_storage: ^9.0.0
   shared_preferences: ^2.2.2
-  flutter_riverpod: ^2.3.6
+  provider: ^6.1.2
   rxdart: ^0.27.7
   flutter_dialog_manager: ^1.0.0+4
   dio: ^5.4.2+1

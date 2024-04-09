@@ -32,6 +32,13 @@ class _${appName}AppState extends State<${appName}App> {
       child: MaterialApp(
         scrollBehavior: const _${appName}ScrollBehavior(),
         title: '${appName}',
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('en')],
         onGenerateRoute: RouteGenerator.onGenerateRoute,
         initialRoute: Routes.splashScreen,
         navigatorKey: _navigatorKey,
