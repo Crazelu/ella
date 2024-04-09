@@ -1,0 +1,121 @@
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:${projectName}/core/data/secure_storage.dart';
+import 'package:${projectName}/core/utils/logger.dart';
+
+abstract class LocalCache {
+  ///Retrieves access token for authorizing requests
+  Future<String> getToken();
+
+  ///Saves access token for authorizing requests
+  Future<void> saveToken(String tokenId);
+
+  ///Deletes cached access token
+  Future<void> deleteToken();
+
+  ///Saves `value` to cache using `key`
+  Future<void> saveToCache({required String key, required dynamic value});
+
+  ///Retrieves a cached value stored with `key`
+  T? getFromCache<T>(
+    String key, [
+    T Function(dynamic)? parser,
+  ]);
+
+  ///Removes cached value stored with `key` from cache
+  Future<void> removeFromCache(String key);
+
+  Future<void> clearCache();
+}
+
+class LocalCacheImpl implements LocalCache {
+  LocalCacheImpl({
+    required SecureStorage storage,
+    required SharedPreferences sharedPreferences,
+  }) {
+    _storage = storage;
+    _sharedPreferences = sharedPreferences;
+  }
+
+  static const _tokenKey = 'userToken';
+
+  late SecureStorage _storage;
+  late SharedPreferences _sharedPreferences;
+  late final _logger = LoggerFactory.getLogger();
+
+  @override
+  Future<void> deleteToken() async {
+    try {
+      await _storage.delete(_tokenKey);
+    } catch (e) {
+      _logger.error(e);
+    }
+  }
+
+  @override
+  T? getFromCache<T>(
+    String key, [
+    T Function(dynamic)? parser,
+  ]) {
+    try {
+      final value = _sharedPreferences.get(key);
+
+      if (parser != null) return parser(value);
+      return value as T?;
+    } catch (e) {
+      _logger.error(e);
+      return null;
+    }
+  }
+
+  @override
+  Future<String> getToken() async {
+    return (await _storage.read(_tokenKey)) ?? "";
+  }
+
+  @override
+  Future<void> removeFromCache(String key) async {
+    await _sharedPreferences.remove(key);
+  }
+
+  @override
+  Future<void> saveToken(String token) async {
+    try {
+      await _storage.write(key: _tokenKey, value: token);
+    } catch (e) {
+      _logger.error(e);
+    }
+  }
+
+  @override
+  Future<void> saveToCache({required String key, required value}) async {
+    switch (value) {
+      case final String value:
+        await _sharedPreferences.setString(key, value);
+        break;
+      case final bool value:
+        await _sharedPreferences.setBool(key, value);
+        break;
+      case final int value:
+        await _sharedPreferences.setInt(key, value);
+        break;
+      case final double value:
+        await _sharedPreferences.setDouble(key, value);
+        break;
+      case final List<String> value:
+        await _sharedPreferences.setStringList(key, value);
+        break;
+      case final Map value:
+        await _sharedPreferences.setString(key, json.encode(value));
+        break;
+      default:
+        _logger.debug('Attempted to save unknown type');
+        break;
+    }
+  }
+
+  @override
+  Future<void> clearCache() async {
+    await _storage.delete(_tokenKey);
+  }
+}

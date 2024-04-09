@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:${projectName}/core/app/app.dart';
+import 'package:${projectName}/core/dependencies/dependency_registry.dart';
+${webPathUrlStrategyConfigImport}
+
+void main() async {
+  ${webPathUrlStrategyConfig}
+  WidgetsFlutterBinding.ensureInitialized();
+  await DependencyRegistry.register();
+  runApp(const ${appName}App());
+}

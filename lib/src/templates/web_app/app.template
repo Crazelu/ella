@@ -1,0 +1,70 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dialog_manager/flutter_dialog_manager.dart';
+import 'package:get_it/get_it.dart';
+import 'package:${projectName}/core/navigation/navigation_listener.dart';
+import 'package:${projectName}/core/dialog/dialog_generator.dart';
+import 'package:${projectName}/core/dialog/dialog_handler.dart';
+import 'package:${projectName}/core/routes/route_generator.dart';
+import 'package:${projectName}/core/routes/routes.dart';
+import 'package:${projectName}/core/presentation/widgets/footer.dart';
+import 'package:${projectName}/core/presentation/widgets/responsive_builder.dart';
+
+class ${appName}App extends StatefulWidget {
+  const ${appName}App({super.key});
+
+  @override
+  State<${appName}App> createState() => _${appName}AppState();
+}
+
+class _${appName}AppState extends State<${appName}App> {
+  late final _navigatorKey = GlobalKey<NavigatorState>();
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+    return DialogManager(
+      dialogKey: GetIt.I<DialogHandler>().dialogKey,
+      navigatorKey: _navigatorKey,
+      onGenerateDialog: DialogGenerator.onGenerateDialog,
+      child: MaterialApp(
+        scrollBehavior: const _${appName}ScrollBehavior(),
+        title: '${appName}',
+        onGenerateRoute: RouteGenerator.onGenerateRoute,
+        initialRoute: Routes.splashScreen,
+        navigatorKey: _navigatorKey,
+        builder: (_, child) => NavigationListener(
+          navigatorKey: _navigatorKey,
+          child: Stack(
+            children: [
+              child!,
+              if(kIsWeb)
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: (10.0, 5.0).resolve,
+                    right: (20.0, 20.0).resolve,
+                  ),
+                  child: const Footer(),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Removes glowing scroll indicator on Android
+class _${appName}ScrollBehavior extends ScrollBehavior {
+  const _${appName}ScrollBehavior();
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const BouncingScrollPhysics();
+  }
+}

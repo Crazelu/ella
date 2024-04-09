@@ -1,0 +1,50 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:${projectName}/core/routes/routes.dart';
+import 'package:${projectName}/screens.dart';
+
+class RouteGenerator {
+  /// Generates routes, extracts and passes navigation arguments.
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.splashScreen:
+         return _getPageRoute(
+          const SplashScreen(),
+          Routes.splashScreen,
+         );
+
+      default:
+        return _getPageRoute(_errorScreen());
+    }
+  }
+
+  /// Wraps widget with a CupertinoPageRoute and adds route settings
+  static CupertinoPageRoute _getPageRoute(
+    Widget child, [
+    String? routeName,
+    dynamic args,
+  ]) =>
+      CupertinoPageRoute(
+        builder: (context) => child,
+        settings: RouteSettings(
+          name: routeName,
+          arguments: args,
+        ),
+      );
+
+  /// Error screen shown when app attempts navigating to an unknown route
+  static Widget _errorScreen({String message = "Error! Screen not found"}) =>
+      Scaffold(
+        appBar: AppBar(
+            title: const Text(
+          'Screen not found',
+          style: TextStyle(color: Colors.red),
+        )),
+        body: Center(
+          child: Text(
+            message,
+            style: const TextStyle(color: Colors.red),
+          ),
+        ),
+      );
+}

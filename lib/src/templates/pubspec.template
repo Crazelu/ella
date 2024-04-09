@@ -1,0 +1,44 @@
+name: ${projectName}
+description: ${projectDescription}
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 0.0.1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: 0.18.1
+  get_it: ^7.6.7
+  equatable: ^2.0.5
+  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.2
+  flutter_riverpod: ^2.3.6
+  rxdart: ^0.27.7
+  flutter_dialog_manager: ^1.0.0+4
+  dio: ^5.4.2+1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  flutter_lints: ^2.0.0
+  mockito: ^5.4.4
+
+flutter_gen:
+  output: lib/core/assets
+  assets:
+    outputs:
+      class_name: AppAssets
+      package_parameter_enabled: false
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/
