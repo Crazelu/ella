@@ -3,3 +3,4 @@
 .dart_tool/
 Makefile
 pubspec.lock
+.DS_Store

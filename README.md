@@ -28,7 +28,7 @@ In the future, Ella should be able to take an image and create different sizes f
 ## How To Use
 Clone the project
 ```sh
-git clone 
+git clone git@github.com:Crazelu/ella.git
 ```
 
 Fire Ella up!
