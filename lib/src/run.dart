@@ -7,6 +7,7 @@ import 'package:ella/src/actions/create_directory.dart';
 import 'package:ella/src/actions/create_entry_points.dart';
 import 'package:ella/src/actions/create_vscode_configurations.dart';
 import 'package:ella/src/actions/format_pubspec.dart';
+import 'package:ella/src/actions/get_suggested_project_name.dart';
 import 'package:ella/src/actions/read_ella_config.dart';
 import 'package:ella/src/actions/update_gitignore.dart';
 import 'package:ella/src/utils/constants.dart';
@@ -31,6 +32,22 @@ void run(List<String> args) async {
 
   final path = argResults['outputDirectory'];
   final projectName = argResults['name'];
+
+  // verify that projectName is a valid Dart package name
+  if (!RegExp(r'^[a-z_][a-z0-9_]*$').hasMatch(projectName)) {
+    final message = '''"$projectName" is not a valid Dart package name.
+
+The name should be all lowercase, with underscores to separate words,
+"just_like_this". Use only basic Latin letters and Arabic digits: [a-z0-9_].Also,
+make sure the name is a valid Dart identifier—that it doesn't start with digits
+and isn't a reserved word.
+See https://dart.dev/tools/pub/pubspec#name for more information.
+Try "${getSuggestedProjectName(projectName)}" instead.
+''';
+
+    print(message);
+    return;
+  }
 
   WorkingDirectory.setDir('$path/$projectName');
 
