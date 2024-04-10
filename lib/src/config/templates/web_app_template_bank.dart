@@ -19,6 +19,14 @@ class WebAppTemplateBank extends TemplateBank {
           template: 'web_app/app.template',
           outputPath: 'lib/core/app/app.dart',
         ),
+        TemplateAction(
+          template: 'web_app/scroll_behavior.template',
+          outputPath: 'lib/core/presentation/widgets/scroll_behavior.dart',
+        ),
+        TemplateAction(
+          template: 'web_app/test_shared.template',
+          outputPath: 'test/shared.dart',
+        ),
       ],
     );
   }

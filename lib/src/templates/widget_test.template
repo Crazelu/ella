@@ -26,7 +26,7 @@ void main() {
 
     await tester.pumpWidget(const ${appName}App());
 
-    final locale = AppLocalizationsEn();
+    final locale = ${appName}LocalizationsEn();
 
     expect(find.byType(SplashScreen), findsOneWidget);
     expect(find.text('Ella!'), findsOneWidget);

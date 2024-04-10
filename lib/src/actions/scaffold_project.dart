@@ -10,6 +10,7 @@ import 'package:ella/src/config/templates/dialog_template_bank.dart';
 import 'package:ella/src/config/templates/extension_template_bank.dart';
 import 'package:ella/src/config/templates/navigation_template_bank.dart';
 import 'package:ella/src/config/templates/screens_template_bank.dart';
+import 'package:ella/src/config/templates/view_model_template_bank.dart';
 import 'package:ella/src/config/templates/web_app_template_bank.dart';
 import 'package:ella/src/utils/constants.dart';
 import 'package:ella/src/utils/working_directory.dart';
@@ -40,6 +41,7 @@ Future<void> scaffoldProject(String platforms) async {
   await ApiClientTemplateBank.defaultBank().execute();
   await ExtensionTemplateBank.defaultBank().execute();
   await ScreensTemplateBank.defaultBank().execute();
+  await ViewModelTemplateBank.defaultBank().execute();
 
   if (platforms.contains('web')) {
     // wait for lib/core/app/app.dart to be created

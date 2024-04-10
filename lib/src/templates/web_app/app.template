@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dialog_manager/flutter_dialog_manager.dart';
 import 'package:get_it/get_it.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:${projectName}/core/navigation/navigation_listener.dart';
 import 'package:${projectName}/core/dialog/dialog_generator.dart';
 import 'package:${projectName}/core/dialog/dialog_handler.dart';
@@ -10,6 +11,7 @@ import 'package:${projectName}/core/routes/route_generator.dart';
 import 'package:${projectName}/core/routes/routes.dart';
 import 'package:${projectName}/core/presentation/widgets/footer.dart';
 import 'package:${projectName}/core/presentation/widgets/responsive_builder.dart';
+import 'package:${projectName}/core/localization/app_localizations.dart';
 
 class ${appName}App extends StatefulWidget {
   const ${appName}App({super.key});
@@ -33,7 +35,7 @@ class _${appName}AppState extends State<${appName}App> {
         scrollBehavior: const _${appName}ScrollBehavior(),
         title: '${appName}',
         localizationsDelegates: const [
-          AppLocalizations.delegate,
+          ${appName}Localizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
