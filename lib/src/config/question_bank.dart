@@ -29,7 +29,7 @@ class QuestionBank {
               'What\'s the name of your app?\nThis will be used to name your root app e.g \'Ella\' will generate EllaApp()',
           key: EllaKeys.appName,
           hint: 'App name cannot contain spaces',
-          defaultResponse: 'My',
+          defaultResponse: 'MyElla',
           answerValidator: (value) =>
               value.trim().isNotEmpty && value.trim().split(' ').length == 1,
           answerParser: (value) => value.trim(),

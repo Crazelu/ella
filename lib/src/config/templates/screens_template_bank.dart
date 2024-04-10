@@ -16,6 +16,11 @@ class ScreensTemplateBank extends TemplateBank {
           outputPath:
               'lib/features/initialization/presentation/screens/splash_screen.dart',
         ),
+        TemplateAction(
+          template: 'screens/splash_view_model.template',
+          outputPath:
+              'lib/features/initialization/presentation/viewmodels/splash_view_model.dart',
+        ),
       ],
     );
   }

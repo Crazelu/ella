@@ -6,13 +6,18 @@ class ViewModelProvider<T extends BaseViewModel> extends StatefulWidget {
   const ViewModelProvider({
     super.key,
     required this.create,
-    required this.child,
+    this.child,
+    this.builder,
     this.initialize,
-  });
+  }) : assert(
+          child != null || builder != null,
+          'Provide child or builder',
+        );
 
   final T Function() create;
   final Function(T)? initialize;
-  final Widget child;
+  final Widget? child;
+  final Widget Function(BuildContext)? builder;
 
   @override
   State<ViewModelProvider<T>> createState() => _ViewModelProviderState<T>();
@@ -34,7 +39,7 @@ class _ViewModelProviderState<T extends BaseViewModel>
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => viewModel,
-      child: widget.child,
+      child: widget.child ?? Builder(builder: widget.builder!),
       dispose: (_, __) => viewModel.dispose(),
     );
   }

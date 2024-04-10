@@ -48,6 +48,18 @@ Future<void> scaffoldProject(String platforms) async {
     // before WebAppTemplateBank attempts to modify the file
     await Future.delayed(const Duration(seconds: 1));
 
+    // delete any generated feature directory
+    final featureDirectory = Directory('${WorkingDirectory.libDir}/features');
+    if (await featureDirectory.exists()) {
+      await featureDirectory.delete(recursive: true);
+    }
+
+    // delete any generated screens barrel export file
+    final screensFile = File('${WorkingDirectory.libDir}/screens.dart');
+    if (await screensFile.exists()) {
+      await screensFile.delete(recursive: true);
+    }
+
     await WebAppTemplateBank.defaultBank().execute();
     await updateWebFiles();
     await addDependencyToPubspec(dependency: 'url_launcher', version: '^6.2.5');

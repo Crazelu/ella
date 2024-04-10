@@ -9,7 +9,6 @@ Future<void> startEllaConfigurationSetup() async {
   await createFile(EllaKeys.ellaConfigFilePath);
 
   final configMap = await setupEllaConfig();
-  print(configMap);
 
   final config = File('${WorkingDirectory.dir}/${EllaKeys.ellaConfigFilePath}');
 

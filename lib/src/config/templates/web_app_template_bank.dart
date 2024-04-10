@@ -27,6 +27,31 @@ class WebAppTemplateBank extends TemplateBank {
           template: 'web_app/test_shared.template',
           outputPath: 'test/shared.dart',
         ),
+        TemplateAction(
+          template: 'web_app/pages.template',
+          outputPath: 'lib/pages.dart',
+        ),
+        TemplateAction(
+          template: 'web_app/routes.template',
+          outputPath: 'lib/core/routes/routes.dart',
+        ),
+        TemplateAction(
+          template: 'web_app/route_generator.template',
+          outputPath: 'lib/core/routes/route_generator.dart',
+        ),
+        TemplateAction(
+          template: 'web_app/home_page.template',
+          outputPath: 'lib/features/home/presentation/pages/home_page.dart',
+        ),
+        TemplateAction(
+          template: 'web_app/home_view_model.template',
+          outputPath:
+              'lib/features/home/presentation/viewmodels/home_view_model.dart',
+        ),
+        TemplateAction(
+          template: 'web_app/widget_test.template',
+          outputPath: 'test/widget_test.dart',
+        ),
       ],
     );
   }

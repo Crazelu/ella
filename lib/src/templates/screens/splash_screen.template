@@ -1,28 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:${projectName}/core/extensions/locale_extension.dart';
+import 'package:${projectName}/core/presentation/viewmodel/view_model_provider.dart';
+import 'package:${projectName}/features/initialization/presentation/viewmodels/splash_view_model.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Ella!',
-              style: Theme.of(context).textTheme.headlineMedium,
+    return ViewModelProvider(
+      create: () => SplashViewModel(),
+      builder: (context) {
+        final viewModel = context.read<SplashViewModel>();
+
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: viewModel.increment,
+            child: const Icon(Icons.add),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: viewModel.counter,
+                  builder: (context, count, _) {
+                    return Text(
+                      'Ella${'!' * count}',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    );
+                  },
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'Language: ${context.locale.language}',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
-            Text(
-              'Language: ${context.locale.language}',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

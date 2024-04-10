@@ -6,7 +6,7 @@ import 'package:${projectName}/core/app/app.dart';
 import 'package:${projectName}/core/dialog/dialog_handler.dart';
 import 'package:${projectName}/core/navigation/navigation_bus.dart';
 import 'package:${projectName}/core/localization/app_localizations_en.dart';
-import 'package:${projectName}/screens.dart';
+import 'package:${projectName}/pages.dart';
 
 import 'mocks.mocks.dart';
 
@@ -28,7 +28,7 @@ void main() {
 
     final locale = ${appName}LocalizationsEn();
 
-    expect(find.byType(SplashScreen), findsOneWidget);
+    expect(find.byType(HomePage), findsOneWidget);
     expect(find.text('Ella'), findsOneWidget);
     expect(find.text('Language: ${locale.language}'), findsOneWidget);
 

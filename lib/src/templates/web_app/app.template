@@ -42,7 +42,7 @@ class _${appName}AppState extends State<${appName}App> {
         ],
         supportedLocales: const [Locale('en')],
         onGenerateRoute: RouteGenerator.onGenerateRoute,
-        initialRoute: Routes.splashScreen,
+        initialRoute: Routes.home,
         navigatorKey: _navigatorKey,
         builder: (_, child) => NavigationListener(
           navigatorKey: _navigatorKey,
