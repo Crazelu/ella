@@ -29,7 +29,7 @@ class Footer extends StatelessWidget {
           const TextSpan(text: "by "),
           TextSpan(
             text: "Crazelu",
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.red,
               fontSize: 12,
             ),
