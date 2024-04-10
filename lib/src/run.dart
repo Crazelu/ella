@@ -127,6 +127,13 @@ void run(List<String> args) async {
 
   final config = await readEllaConfig();
 
+  // delete config file
+  await Process.run(
+    'rm',
+    ['config.json'],
+    workingDirectory: WorkingDirectory.dir,
+  );
+
   if (['y', 'Y'].contains(config[EllaKeys.createInitialCommit])) {
     await Process.run(
       'git',
