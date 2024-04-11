@@ -1,7 +1,5 @@
 import 'dart:developer' as dev;
 
-bool _showLogs = false;
-
 class LoggerFactory {
   LoggerFactory._();
 
@@ -11,8 +9,14 @@ class LoggerFactory {
 abstract class Logger {
   Logger._();
 
-  static void configure({required bool showLogs}) {
-    _showLogs = showLogs;
+  static bool _canShowLogs = false;
+
+  static void showLogs() {
+    _canShowLogs = true;
+  }
+
+  static void hideLogs() {
+    _canShowLogs = false;
   }
 
   void info(
@@ -45,7 +49,7 @@ class _Logger implements Logger {
     Object? error,
     StackTrace? stackTrace,
   }) {
-    if (_showLogs) {
+    if (Logger._canShowLogs) {
       dev.log(
         message,
         level: level,
