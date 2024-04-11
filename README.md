@@ -6,6 +6,7 @@ Ella is a Flutter project bootstrapper that generates a starter Flutter project 
 Ella creates a starter Flutter project with all of these out of the box:
 
 - [x] Localization
+- [x] Logging
 - [x] HTTP client with interceptors ([Dio](https://pub.dev/packages/dio))
 - [x] Local storage
 - [x] Navigation
