@@ -6,8 +6,8 @@ class LoggingInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    _logger.debug('REQUEST URI: ${options.uri}');
-    _logger.debug(
+    _logger.info('REQUEST URI: ${options.uri}');
+    _logger.info(
       'METHOD: ${options.method}\nHEADERS: ${options.headers}\nBODY: ${options.data}',
     );
     super.onRequest(options, handler);
@@ -16,8 +16,8 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     final options = response.requestOptions;
-    _logger.debug('RESPONSE URI: ${options.uri}');
-    _logger.debug(
+    _logger.info('RESPONSE URI: ${options.uri}');
+    _logger.info(
       'METHOD: ${options.method}\nHEADERS: ${options.headers}\nSTATUS CODE: ${response.statusCode}\nSTATUS MESSAGE: ${response.statusMessage}\nBODY: ${options.data}',
     );
     super.onResponse(response, handler);

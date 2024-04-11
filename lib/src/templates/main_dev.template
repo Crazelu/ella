@@ -7,7 +7,7 @@ ${webPathUrlStrategyConfigImport}
 void main() async {
   ${webPathUrlStrategyConfig}
   WidgetsFlutterBinding.ensureInitialized();
-  AppLogger.configure(showLogs: true);
+  Logger.configure(showLogs: true);
   await DependencyRegistry.register();
   runApp(const ${appName}App());
 }

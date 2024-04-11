@@ -41,14 +41,14 @@ class LocalCacheImpl implements LocalCache {
 
   late SecureStorage _storage;
   late SharedPreferences _sharedPreferences;
-  late final _logger = LoggerFactory.getLogger();
+  late final _logger = LoggerFactory.getLogger(LocalCacheImpl);
 
   @override
   Future<void> deleteToken() async {
     try {
       await _storage.delete(_tokenKey);
     } catch (e) {
-      _logger.error(e);
+      _logger.error('deleteToken error', error: e);
     }
   }
 
@@ -63,7 +63,7 @@ class LocalCacheImpl implements LocalCache {
       if (parser != null) return parser(value);
       return value as T?;
     } catch (e) {
-      _logger.error(e);
+      _logger.error('getFromCache error', error: e);
       return null;
     }
   }
@@ -83,7 +83,7 @@ class LocalCacheImpl implements LocalCache {
     try {
       await _storage.write(key: _tokenKey, value: token);
     } catch (e) {
-      _logger.error(e);
+      _logger.error('saveToken error', error: e);
     }
   }
 
@@ -109,7 +109,7 @@ class LocalCacheImpl implements LocalCache {
         await _sharedPreferences.setString(key, json.encode(value));
         break;
       default:
-        _logger.debug('Attempted to save unknown type');
+        _logger.info('Attempted to save unknown type');
         break;
     }
   }

@@ -23,7 +23,7 @@ class SecureStorageImpl implements SecureStorage {
   }
 
   late FlutterSecureStorage _storage;
-  late final _logger = LoggerFactory.getLogger();
+  late final _logger = LoggerFactory.getLogger(SecureStorageImpl);
 
   @override
   Future<bool> delete(String key) async {
@@ -40,7 +40,7 @@ class SecureStorageImpl implements SecureStorage {
     try {
       return await _storage.read(key: key);
     } catch (e) {
-      _logger.error(e);
+      _logger.error('read error', error: e);
       return null;
     }
   }
@@ -50,7 +50,7 @@ class SecureStorageImpl implements SecureStorage {
     try {
       await _storage.write(key: key, value: value);
     } catch (e) {
-      _logger.error(e);
+      _logger.error('write error', error: e);
     }
   }
 }
