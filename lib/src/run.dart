@@ -116,9 +116,8 @@ Try "${getSuggestedProjectName(projectName)}" instead.
 
   // run code gen
   await Process.run(
-    'flutter',
+    'dart',
     [
-      'pub',
       'run',
       'build_runner',
       'build',
