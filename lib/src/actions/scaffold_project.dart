@@ -64,6 +64,10 @@ Future<void> scaffoldProject(String platforms) async {
     await updateWebFiles();
     await addDependencyToPubspec(dependency: 'url_launcher', version: '^6.2.5');
     await addDependencyToPubspec(dependency: 'url_strategy', version: '^0.2.0');
+    await addDependencyToPubspec(
+      dependency: 'universal_html',
+      version: '^2.2.4',
+    );
   }
 
   final mainFile = File('${WorkingDirectory.libDir}/main.dart');
