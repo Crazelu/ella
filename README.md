@@ -1,6 +1,6 @@
-# Ella
+# Ella <img src="https://raw.githubusercontent.com/Crazelu/ella/main/assets/logo.png" alt="Ella's logo">
 
-Ella is a Flutter project bootstrapper that generates a starter Flutter project with all of my opinions.
+Ella is a Flutter project bootstrapper that generates an opinionated starter Flutter project for Android, iOS and Web in 30 seconds.
 
 ## Features
 Ella creates a starter Flutter project with all of these out of the box:
