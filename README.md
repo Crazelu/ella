@@ -1,4 +1,4 @@
-# Ella <img src="https://raw.githubusercontent.com/Crazelu/ella/main/assets/logo.png" alt="Ella's logo">
+# Ella <img src="https://raw.githubusercontent.com/Crazelu/ella/main/assets/logo.png" align="center" height="56" width="56" alt="Ella's logo">
 
 Ella is a Flutter project bootstrapper that generates an opinionated starter Flutter project for Android, iOS and Web in 30 seconds.
 
