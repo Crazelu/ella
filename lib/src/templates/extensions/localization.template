@@ -2,6 +2,6 @@ import 'package:${projectName}/core/localization/app_localizations.dart';
 import 'package:${projectName}/core/localization/app_localizations_en.dart';
 import 'package:flutter/material.dart';
 
-extension ${appName}LocaleExtension on BuildContext {
-    ${appName}Localizations get locale => ${appName}Localizations.of(this) ?? ${appName}LocalizationsEn();
+extension ${appName}LocalizationExtension on BuildContext {
+    ${appName}Localizations get localization => ${appName}Localizations.of(this) ?? ${appName}LocalizationsEn();
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:${projectName}/core/extensions/locale_extension.dart';
+import 'package:${projectName}/core/extensions/localization_extension.dart';
 import 'package:${projectName}/core/presentation/viewmodel/view_model_provider.dart';
 import 'package:${projectName}/core/presentation/widgets/responsive_builder.dart';
 import 'package:${projectName}/features/home/presentation/viewmodels/home_view_model.dart';
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                     ),
                   const SizedBox(height: 16),
                   Text(
-                    'Language: ${context.locale.language}',
+                    'Language: ${context.localization.language}',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ],

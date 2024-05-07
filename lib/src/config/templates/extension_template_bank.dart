@@ -8,8 +8,8 @@ class ExtensionTemplateBank extends TemplateBank {
     return ExtensionTemplateBank(
       actions: [
         TemplateAction(
-          template: 'extensions/locale.template',
-          outputPath: 'lib/core/extensions/locale_extension.dart',
+          template: 'extensions/localization.template',
+          outputPath: 'lib/core/extensions/localization_extension.dart',
         ),
       ],
     );
